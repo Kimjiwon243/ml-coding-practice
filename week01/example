@@ -1,4 +1,11 @@
+#간단한 파이썬 예제
 name = "Python"
-numvers = [1,2,3,4,5]
+numbers = [1,2,3,4,5]
 
-def 
+def square(x);
+    return x*x
+
+for n in numbers:
+    print(f"{name}에서 {n}의 제곱은 {square(n)}입니다.")
+
+    
