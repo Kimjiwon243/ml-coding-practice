@@ -51,4 +51,11 @@ print(a.count('p'))
 # 문자 위치 확인
 print(a.find('y'))
 print(a.find('p'))
-print(a.find('y'))
+print(a.index('y'))
+# print(a.index('p')) # 오류 발생
+
+# 문자 삽입
+b = ","
+c = b.join('Abcd')
+print(c)
+
