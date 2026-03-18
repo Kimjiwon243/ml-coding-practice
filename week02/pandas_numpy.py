@@ -147,3 +147,12 @@ print(np.array([[[1,2,3],
                 [4,5,6],
                 [7,8,9]]]))
 
+print(np.array([1,2,3,4,5]))
+print(np.array(sample_df))
+
+sample_np = np.array(sample_df)
+print(pd.DataFrame(sample_df))
+
+print(sample_df.columns)
+
+print(pd.DataFrame(sample_df, columns= sample_df.columns))
