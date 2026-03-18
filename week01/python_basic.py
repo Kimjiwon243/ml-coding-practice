@@ -376,4 +376,14 @@ c = input("값을 입력해주세요:")
 print(c)
 
 # 사용자 입력으로 받은 값을 문자열로 반환2
-c = 
+c = input("정수을 입력해주세요:")
+print(c)
+
+# 입력 받은 숫자에 해당되는 범위의 값을 반환
+print(range(5))
+print(list(range(5, 10)))
+print(list(range(5, 10, 2)))
+
+for i in range(5, 20, 3):
+    print(i)
+
