@@ -114,4 +114,12 @@ print(a)
 a[1:2] = ['a', 'b', 'c']
 print(a)
 
-a[-1] = []
+a[-1] = ['d', 'e', 'f']
+print(a)
+
+# 삭제
+del a[-1]
+print(a)
+
+# 원소 정렬
+b.sort
