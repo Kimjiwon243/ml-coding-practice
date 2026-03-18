@@ -24,4 +24,7 @@ sample_df = pd.read_csv(file_url, index_col=0)
 print(sample_df['var_5'])
 
 # print(sample_df['var_1', 'var_2'])   # [ ] 안에는 하나의 값만 들어갈 수 있음
-print(sample_df[['var_1', 'var_4']])
+print(sample_df[['var_1', 'var_4']])   # [ [] ]를 사용하면 [] 가 하나의 값으로 인식됨
+
+# loc는 location의 앞글자
+print(sample_df.loc['a'])              # 행 기준으로 인덱싱
