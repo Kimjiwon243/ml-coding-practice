@@ -90,3 +90,8 @@ print(sample_df.reset_index(drop=True))          # 기존 인덱스는 제거하
 
 print(sample_df.reset_index('var_1'))
 
+print(sample_df.describe())
+print(sample_df.std())
+print(sample_df.agg(['count', 'mean', 'std', 'min', 'max']))
+
+file_url 
