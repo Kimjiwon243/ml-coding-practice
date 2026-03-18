@@ -66,4 +66,9 @@ print(a.lower())
 # 공백 제거
 d = "              py           "
 print(d.lstrip())
-print(d.rsplit)
+print(d.rsplit())
+print(d.strip())
+
+# 문자열 수정 (불가능)
+a = "Piton"
+# a[1] = 'y'    
