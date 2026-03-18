@@ -15,3 +15,9 @@ print(7 // 3)
 
 s1 = 'Hello Python'
 print(s1)
+
+s3 = '''
+Python'''
+print(s3)
+
+head = "Python"
