@@ -75,4 +75,6 @@ a = "Piton"
 
 # 문자열 바꾸기
 a = "Python is difficult."
-print(a.replace("difficult", "funny"))    
+print(a.replace("difficult", "funny"))
+print(a)
+
