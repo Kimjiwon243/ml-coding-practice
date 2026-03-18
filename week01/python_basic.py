@@ -248,3 +248,12 @@ s2 = set([1, 2, 3, 4, 5, 6, 3, 1, 6])
 print(s2)
 
 # 비교 연산자
+x = 3
+y = 2
+print(x == y)
+print(x != y)
+print(x >= y)
+
+# 조건의 연결
+money = 1300
+if money >= 1200 and money < 3500
