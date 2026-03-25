@@ -106,3 +106,5 @@ survived_count = titanic['Survived'].value_counts()
 print(survived_count)
 
 # 파이 차트 그리기 
+plt.figure(figsize=(8, 8))
+plt.pie(survived_count, labels=)
