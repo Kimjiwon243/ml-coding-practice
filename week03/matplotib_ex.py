@@ -109,3 +109,8 @@ print(survived_count)
 plt.figure(figsize=(8, 8))
 plt.pie(survived_count, labels=['Not Survived', 'Survived'], color=['orange', 'gold'],
         autopct='%0.1f%%', startangle=90, shadow=True, explode=(0, 0.1))
+
+plt.title('Survival Distributon on the Titanic')
+plt.savefig('Figure05.png')
+plt.close()
+
