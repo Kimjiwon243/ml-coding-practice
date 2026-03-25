@@ -124,4 +124,14 @@ titanic = titanic.dropna(subset=['Age'])
 print(titanic.info())
 
 # 히스토그램 그리기
-plt
+plt.figure(figsize=(10, 6))
+plt.hist(titanic['Age'], bins=20, color='seagreen', edgecolor='black')
+
+plt.xlabel('Age')
+plt.ylabel('Count')
+plt.title('Distribution of Ages on the Titanic')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.savefig('Figure06.png')
+plt.close()
+
+## 히트맵 : 두 변수의 상관 관계를 표시하기**
