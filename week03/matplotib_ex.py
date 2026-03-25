@@ -290,3 +290,122 @@ y2 = parch_counts[1].values # 생존자
 
 plt.figure(figsize=(10, 10))
 
+# plt.subplot() 함수를 사용하여 하나의 그림인 figure에 개별 서브플롯을 하나씩 추가
+# 첫 번째 서브플롯 설정(선 그래프)
+plt.subplot(2, 1, 1)
+# 선 그래프 그리기
+plt.plot(x, y1, '-o', color='indigo', markersize=7, linewidth=3, alpha=0.7,
+label='Not Survived')
+plt.xlabel('Parch')
+plt.ylabel('Not Survived Count', color='indigo')
+plt.tick_params(axis='y', labelcolor='indigo')
+plt.legend(loc='upper right')
+
+# 두 번째 서브플롯 설정(막대 그래프)
+plt.subplot(2, 1, 2)
+plt.bar(x, y2, color='deeppink', alpha=0.7, width=0.5, label='Survived')
+plt.xlabel('Parch')
+plt.ylabel('Survived Count', color='deeppink')
+plt.tick_params(axis='y', labelcolor='deeppink')
+plt.legend(loc='upper right')
+
+# 제목 설정
+plt.suptitle('Survival Analysis by Number of Parents/Children (Parch) on the Titanic')
+plt.tight_layout()
+plt.savefig('Figure13.png')
+plt.close()
+
+## **개별 서브플롯을 동시에 생성하기**
+
+# 2*2 구성의 figure
+fig, axes = plt.subplots(2, 2)
+
+# 선그래프
+axes[0, 0].plot([1, 2, 3])
+axes[0, 1].plot([4, 5, 6])
+axes[1, 0].plot([7, 8, 9])
+axes[1, 1].plot([10, 11, 12])
+plt.savefig('Figure14.png')
+plt.close()
+
+## **타이타닉 데이터셋으로 개별 서브플롯 동시에 그리기**
+
+# 각 부모와 자녀의 수에 따른 생존자와 사망자 수 계산
+parch_counts = titanic.groupby('Parch')['Survived'].value_counts().unstack().fillna(0)
+print(parch_counts)
+
+# x, y값 설정
+x = parch_counts.index.astype(str) # 데이터프레임의 인덱스를 문자열로 변환
+y1 = parch_counts[0].values # 사망자
+y2 = parch_counts[1].values # 생존자
+
+# plt.subplots() 함수를 사용하여 하나의 그림인 figure에 개별 서브플롯을 동시에 추가
+fig, axes = plt.subplots(2, 1, figsize=(10, 10))
+
+# 첫 번째 서브플롯 설정(선 그래프)
+axes[0].plot(x, y1, '-o', color='indigo', markersize=7, linewidth=3, alpha=0.7, label='Not Survived')
+axes[0].set_xlabel('Parch')
+axes[0].set_ylabel('Not Survived Count', color='indigo')
+axes[0].tick_params(axis='y', labelcolor='indigo')
+axes[0].legend(loc='upper right')
+
+# 두 번째 서브플롯 설정 (막대 그래프)
+axes[1].bar(x, y2, color='deeppink', alpha=0.7, width=0.5, label='Survived')
+axes[1].set_xlabel('Parch')
+axes[1].set_ylabel('Survived Count', color='deeppink')
+axes[1].tick_params(axis='y', labelcolor='deeppink')
+axes[1].legend(loc='upper right')
+
+# 제목 설정
+fig.suptitle('Survival Analysis by Number of Parents/Children (Parch) on the Titanic')
+fig.tight_layout()
+plt.savefig('Figure15.png')
+plt.close()
+
+## **하나의 서브플롯에 여러 그래프 그리기**
+
+# 각 부모와 자녀의 수에 따른 생존자와 사망자 수 계산
+parch_counts = titanic.groupby('Parch')['Survived'].value_counts().unstack().fillna(0)
+print(parch_counts)
+
+# x, y값 설정
+x = parch_counts.index.astype(str) # 데이터프레임의 인덱스를 문자열로 변환
+y1 = parch_counts[0].values # 사망자
+y2 = parch_counts[1].values # 생존자
+
+# plt.subplots() 함수를 사용하여 그래프 생성
+# figure와 서브플롯 생성
+fig, ax1 = plt.subplots()
+
+# 첫 번째 그래프 설정 (선 그래프)
+ax1.plot(x, y1, '-s', color='indigo', markersize=7, linewidth=5, alpha=0.7, label='Not Survived')
+ax1.set_xlabel('Parch') # x축의 레이블
+ax1.set_ylabel('Not Survived Count', color='indigo') # y축의 레이블
+ax1.tick_params(axis='y', labelcolor='indigo') # 눈금의 모양과 속성
+ax1.legend(loc='upper right', bbox_to_anchor=(1, 1)) # 범례
+
+# .twinx() 함수를 사용하여 두 번째 그래프와 축을 공유하는 새로운 Axes 객체 생성
+ax2 = ax1.twinx()
+
+# 두 번째 그래프 설정 (막대 그래프)
+ax2.bar(x, y2, color='deeppink', alpha=0.7, width=0.7, label='Survived')
+ax2.set_ylabel('Survived Count', color='deeppink') # 서브플롯 y축에 레이블 추가
+ax2.tick_params(axis='y', labelcolor='deeppink')
+ax2.legend(loc='upper right', bbox_to_anchor=(1, 0.9))
+
+plt.suptitle('Survival Analysis by Number of Parents/Children (Parch) on the Titanic')
+plt.tight_layout()
+plt.savefig('Figure16.png')
+plt.close()
+
+## **그래프 저장하기**
+
+# 히스토그램 그리기
+plt.hist(titanic['Age'], bins=20, color='skyblue', edgecolor='black')
+plt.xlabel('Age')
+plt.ylabel('Count')
+plt.title('Distribution of Ages on the Titanic')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# 이미지로 저장
+plt.savefig('Figure17.png')
