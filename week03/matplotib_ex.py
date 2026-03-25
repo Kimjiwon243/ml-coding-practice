@@ -116,3 +116,12 @@ plt.close()
 
 """### **히스토그램 : 승객의 나이 분포 표시하기**"""
 
+# 처리 전
+print(titanic.info(), '\n')
+
+# 나이 결측지 처리 후 
+titanic = titanic.dropna(subset=['Age'])
+print(titanic.info())
+
+# 히스토그램 그리기
+plt
