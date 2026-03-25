@@ -77,3 +77,22 @@ for i, value in enumerate(survived_count):
     plt.text(value + 1, i, str(value), ha='left', va='center')
 
     plt.savefig('Figure03.png')
+    plt.close()
+
+"""### **산점도 그래프 : 나이와 요금, 생존 여부 확인하기**"""
+
+print(titanic.info(), '\n')
+
+# 결측지 처리 
+titanic = titanic.dropna(subset=['Age', 'Fare', 'Survived'])
+print(titanic.info())
+
+# 산점도 그래프 그리기
+plt.figure(figsize=(12, 8))
+scatter = plt.scatter(x='Age', y='Fare', data=titanic, c=titanic['Survived'],cmap='Set2', alpha=0.7)
+
+plt.title('Age and Fare Relationship with Survival on Titanic')
+plt.xlabel('Age')
+plt.ylabel('Fare')
+plt.legend(handles=scatter.legend_elements()[0], title='Survived',
+           lab)
