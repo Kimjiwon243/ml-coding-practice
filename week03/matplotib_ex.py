@@ -169,3 +169,4 @@ print(survived_counts)
 
 # 영역 채우기 그래프 그리기
 plt.figure(figsize=(10, 6))
+
