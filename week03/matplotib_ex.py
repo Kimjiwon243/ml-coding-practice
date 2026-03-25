@@ -100,3 +100,9 @@ plt.savefig('Figure04.png')
 plt.close()
 
 """### **파이 차트 : 생존자, 사망자 비율 표현하기**"""
+
+# 사망자와 생존자와 수 계산
+survived_count = titanic['Survived'].value_counts()
+print(survived_count)
+
+# 파이 차트 그리기 
