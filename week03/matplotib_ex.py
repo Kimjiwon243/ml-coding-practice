@@ -3,7 +3,6 @@
 import pandas as pd
 
 # 타이타닉 CSV 파일 불러오기
-pd.read_csv('week03/3.1.1.titanic.csv')
 titanic = pd.read_csv('3.1.1.titanic.csv')
 
 
