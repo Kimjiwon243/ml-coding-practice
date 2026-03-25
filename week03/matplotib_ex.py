@@ -274,3 +274,19 @@ plt.plot([10, 11, 12])
 plt.savefig('Figure12.png')
 plt.close()
 
+## **타이타닉 데이터셋으로 개별 서브플롯 하나씩 그리기**
+
+# Survived가 0이면 사망자를, 1이면 생존자를 나타냄
+titanic = pd.read_csv('3.1.1.titanic.csv')
+
+# 각 부모와 자녀의 수에 따른 생존자와 사망자 수 계산
+parch_counts = titanic.groupby('Parch')['Survived'].value_counts().unstack().fillna(0)
+print(parch_counts)
+
+# x, y 설정
+x = parch_counts.index.astype(str) # 데이터프레임의 인덱스를 문자열로 반환
+y1 = parch_counts[0].values # 사망자
+y2 = parch_counts[1].values # 생존자
+
+plt.figure(figsize=(10, 10))
+
