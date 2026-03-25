@@ -25,4 +25,5 @@ import matplotlib.pyplot as plt
 # 선 그래프 그리기
 plt.plot(pclass_survived_mean['Pclass'], pclass_survived_mean['Survived'],
          marker='o', linestyle='-', color='violet')
-plt.title('Survival Rate Variation Across Passenger')
+plt.title('Survival Rate Variation Across Passenger Calsses')
+plt.xlabel('Pclass')
