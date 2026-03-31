@@ -60,4 +60,6 @@ print(imputer.statistics_)           # imputer 결과 값
 print(housing_num.median().values)   # 수동으로 계산한 중간값
 
 # 훈련 세트의 누락값을 imputer가 학습한 값으로 채우기
-X = 
+X = imputer.transform(housing_num)
+
+imputer
