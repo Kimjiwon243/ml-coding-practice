@@ -17,8 +17,8 @@ def main():
     jsonResponse = getNaverSearch(node, srcText, 1, 100)      # [CODE 2]
     total = jsonResponse['total']
 
-    while ((jsonResponse != None) and (jsonResponse['display'] !=0)):
-        for post in jsonResponse['item']:
+    while ((jsonResponse != None) and (jsonResponse['display'] != 0)):
+        for post in jsonResponse['items']:
             cnt += 1
             getPostData(post, jsonResult, cnt)                # [CODE 3]
 
@@ -27,16 +27,17 @@ def main():
 
     print('전체 검색 : %d 건' %total)
 
-    with open('%s_naver_%s.json' % (srcText, node), 'w', encoding= 'utf8') as outfile:
+    with open('%s_naver_%s.json' % (srcText, node), 'w', encoding = 'utf8') as outfile:
         jsonFile = json.dumps(jsonResult, indent = 4, sort_keys = True,
                               ensure_ascii = False)
-        
+
         outfile.write(jsonFile)
 
     print("가져온 데이터 : %d 건" %(cnt))
     print('%s_naver_%s.json SAVED' % (srcText, node))
 
-def getNaverSearch(node, srcText, Page_start, display):
+
+def getNaverSearch(node, srcText, page_start, display):
     base = "https://openapi.naver.com/v1/search"
     node = "/%s.json" % node
     parameters = "?query=%s&start=%s&display=%s" % (urllib.parse.quote(srcText), page_start, display)
@@ -44,10 +45,10 @@ def getNaverSearch(node, srcText, Page_start, display):
     url = base + node + parameters
     responseDecode = getRequestUrl(url)               #[CODE 1]
 
-    if(responseDecode == None):
+    if (responseDecode == None):
         return None
-    else: 
-        return json.load(responseDecode)
+    else:
+        return json.loads(responseDecode)
     
 
 
