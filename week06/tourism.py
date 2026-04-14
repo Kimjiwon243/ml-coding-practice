@@ -57,4 +57,4 @@ def getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear):
 
 """### [CODE 2]"""
 
-def getTourismStatsIte
+def getTourismStatsItem(yyyymm, nat_cd, ed_cd):
