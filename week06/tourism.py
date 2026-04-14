@@ -40,3 +40,4 @@ def getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear):
            if jsonData['response']['body']['item'] == '':
               dateEND = "{0}{1:0>2}".format(str(year), str(month))
               jsonData = getTourismStatsItem(yyyymm, nat_cd, ed_cd)     #[CODE 2]
+              if (jsonData)
