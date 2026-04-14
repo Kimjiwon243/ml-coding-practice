@@ -50,7 +50,7 @@ def getNaverSearch(node, srcText, page_start, display):
     else:
         return json.loads(responseDecode)
     
-    
+
 def getRequestUrl(url):
     req = urllib.request.Request(url)
 
@@ -68,5 +68,7 @@ def getRequestUrl(url):
         return None
     
 
-
+def getPostData(post, jsonResult, cnt):  #[CODE 3]
+    title = post['title']
+    description
 
