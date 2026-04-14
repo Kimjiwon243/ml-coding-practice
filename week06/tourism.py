@@ -84,4 +84,7 @@ def getRequestUrl(url):  #[CODE 1]
          return response.read().decode('utf-8')
    except Except as e:
       print(e)
-      print
+      print("[%s] Error for URL : %s" % (datetime.datetime.now(), url))
+      return None
+   
+main()
