@@ -49,7 +49,7 @@ def getNaverSearch(node, srcText, page_start, display):
         return None
     else:
         return json.loads(responseDecode)
-    
+
 
 def getRequestUrl(url):
     req = urllib.request.Request(url)
@@ -60,13 +60,13 @@ def getRequestUrl(url):
     try:
         response = urllib.request.urlopen(req)
         if response.getcode() == 200:
-            print("[%s] Url Request Sucess" % datetime.datetime.now())
+            print("[%s] Url Request Success" % datetime.datetime.now())
             return response.read().decode('utf-8')
     except Exception as e:
         print(e)
         print("[%s] Error for URL : %s" % (datetime.datetime.now(), url))
         return None
-    
+
 
 def getPostData(post, jsonResult, cnt):  #[CODE 3]
     title = post['title']
