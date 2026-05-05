@@ -95,3 +95,4 @@ plt.show()
 
 netflix['title'].str.contains('squid game', na=False, case=False)
 
+# 오징어 게임을 검색한 조건을 넷플릭스 데이터에 넣어서 True인 값만 출력
