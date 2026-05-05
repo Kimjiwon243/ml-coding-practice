@@ -20,6 +20,5 @@ netflix.head(3)
 netflix.info()
 
 # 넷플릭스 결측치 비율 확인하기
-for i in netflix.columns:
+for i in netflix.columns : 
     missing_rate = netflix[i].isnull().sum() / len(netflix) * 100
-    print(f"{i} 결측치 비율: {missing_rate:.2f}%")
