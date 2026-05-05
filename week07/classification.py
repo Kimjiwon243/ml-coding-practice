@@ -13,4 +13,14 @@ print(y.shape)
 
 import matplotlib.pyplot as ply
 
-def plot
+def plot_digit(data):
+    image = data.reshape(28, 28)
+    ply.imshow(image, cmap=ply.cm.binary, interpolation='nearest')
+    ply.axis('off')
+
+some_digit = X[0]
+plot_digit(some_digit)
+ply.show()
+
+print(y[0])         # 샘플 데이터 레이블 확인 (=5)
+
