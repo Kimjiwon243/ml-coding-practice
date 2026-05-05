@@ -25,4 +25,7 @@ ply.show()
 print(y[0])         # 샘플 데이터 레이블 확인 (=5)
 
 # 10x10 그림 생성
-
+plt.figure(figsize=(9, 9)):
+    for i in range(100):
+        plt.subplot(10, 10, i + 1)
+        plot_digit(X[i])
