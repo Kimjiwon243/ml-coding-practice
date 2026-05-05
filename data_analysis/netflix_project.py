@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # 넷플릭스 데이터 분석 프로젝트
 
-import numpy as np 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 # 세션 저장소에 업로드한 csv 파일을 읽어 변수에 할당
 netflix = pd.read_csv('netflix_titles.csv')
-netflix.head()  
+netflix.head()
 
 # .columns : 열 이름 확인
 list(netflix.columns)
@@ -20,10 +20,10 @@ netflix.head(3)
 netflix.info()
 
 # 넷플릭스 결측치 비율 확인하기
-for i in netflix.columns : 
-    missing_rate = netflix[i].isna().sum() / len(netflix) * 100
-    if missing_rate > 0 :
-        print("{} null rate: {}%".format(i, round(missing_rate, 2)))
+for i in netflix.columns :
+    missingValueRate = netflix[i].isna().sum() / len(netflix) * 100
+    if missingValueRate > 0 :
+        print("{} null rate: {}%".format(i,round(missingValueRate, 2)))
 
 # .fillna( ) : 결측치를 다른 값으로 대체하여 처리
 # 결측치 비율 : country(9.44%)
@@ -37,7 +37,7 @@ netflix['cast'] = netflix['cast'].replace(np.nan, 'No Data')
 # .dropna(axis = 0) : 결측치가 있는 행 전체 제거
 # 원본 객체를 수정하려면 inplace = True 옵션 추가
 # 결측치 비율 : date_added(0.11%), rating(0.05%), duration(0.03%)
-netflix.dropna(axis = 0, inplace = True)
+netflix.dropna(axis = 0, inplace=True)
 
 # .info() : 열에 대한 요약 정보 확인
 # 8807 rows(원본 데이터 행 개수) - 17 rows(결측치 행) = 8790 rows(결측치가 제거된 행 개수)
@@ -108,7 +108,7 @@ plt.pie(type_counts, labels=type_counts.index, autopct='%0.f%%', startangle=100,
         explode=[0.05, 0.05], shadow=True, colors=['#b20710', '#221f1f'])
 
 plt.suptitle('Movie & TV Show distribution', fontfamily='serif', fontsize=15, fontweight='bold')
-plt.title('We see more movies than TV shows on Netflix', fontfamily='serif', fontsize=12)
+plt.title('We see more movies than TV shows on Netflix.', fontfamily='serif', fontsize=12)
 plt.show()
 
 netflix.head(3)
@@ -127,7 +127,7 @@ netflix['listed_in'].str.split(', ', expand=True).stack()
 
 # [3단계] .value_counts( )를 붙여 장르의 등장 횟수 계산
 # 예시) 인덱스 1의 listed_in 열 값 : International TV Shows, TV Dramas, TV Mysteries
-netflix['listed_in'].str.split(', ', expand=True).stack().value_counts()
+genres = netflix['listed_in'].str.split(', ', expand=True).stack().value_counts()
 genres
 
 plt.figure(figsize=(12, 6))
@@ -150,11 +150,11 @@ netflix['country'] = netflix['country'].str.split(', ')
 netflix['country']
 
 # 파이썬 리스트로 바꾼 country 열의 값에 explode( ) 함수를 적용하여 개별 행으로 분리
-netflix_exploded = netflix.explode('country')
+netflix_age_country = netflix.explode('country')
 netflix_age_country
 
 # title열의 값이 ‘Sankofa’인 행 전체를 확인하여 country 열과 age_group 열의 값이 어떻게 이루어져 있는지 확인
-netflix_exploded[netflix_exploded['title'].str.contains('Sankofa', na=False, case=False)]
+netflix_age_country[netflix_age_country['title'].str.contains('Sankofa', na=False, case=False)]
 
 # 각 나이 그룹에 따른 국가별 넷플릭스 콘텐츠 수 구하기
 netflix_age_country_unstack = netflix_age_country.groupby('age_group')['country'].value_counts().unstack()
@@ -174,7 +174,7 @@ netflix_age_country_unstack = netflix_age_country_unstack.loc[age_order, country
 netflix_age_country_unstack = netflix_age_country_unstack.fillna(0)
 netflix_age_country_unstack
 
-# 결측치 0으로 처리
+# 나이 그룹에 따른 국가별 넷플릭스 콘텐츠 비율 구하기
 netflix_age_country_unstack = netflix_age_country_unstack.div(netflix_age_country_unstack.sum(axis=0), axis=1)
 netflix_age_country_unstack
 
@@ -183,7 +183,7 @@ plt.figure(figsize=(15, 5))
 # 사용자 정의 컬러맵 만들기
 cmap = plt.matplotlib.colors.LinearSegmentedColormap.from_list('', ['#221f1f','#b20710','#f5f5f1'])
 
-sns.heatmap(netflix_age_country_unstack, cmap = cmap, linewidths=2.5, annot=True, fmt='.0%')
+sns.heatmap(netflix_age_country_unstack, cmap = cmap, linewidth=2.5, annot=True, fmt='.0%')
 
 plt.suptitle('Target ages proportion of total content by country',
              fontweight='bold', fontfamily='serif', fontsize=15)
