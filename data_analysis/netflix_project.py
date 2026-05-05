@@ -140,3 +140,4 @@ plt.ylabel('Genre', fontsize=14)
 plt.grid(axis='x')
 plt.show()
 
+netflix[ne]
