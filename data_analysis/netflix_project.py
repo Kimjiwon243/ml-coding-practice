@@ -104,4 +104,8 @@ print(type_counts)
 # 5 x 5 크기의 플롯 만들기
 plt.figure(figsize=(5, 5))
 
-plt.pie(type_counts, labels=type_counts.index, autopct='0.f%%')
+plt.pie(type_counts, labels=type_counts.index, autopct='%0.f%%', startangle=100,
+        explode=[0.05, 0.05], shadow=True, colors=['#b20710', '#221f1f'])
+
+plt.suptitle('Movie & TV Show distribution', fontfamily='serif', fontsize=15, fontweight='bold')
+plt.title('Netflix', fontfamily='serif', fontsize=12, y=1.05)
