@@ -30,3 +30,5 @@ Polynomial_svm_clf = make_pipeline(
     StandardScaler(),
     LinearSVC(kernel='linear', C=10, random_state=42)
 )
+Polynomial_svm_clf.fit(X, y)
+
