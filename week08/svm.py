@@ -34,3 +34,5 @@ Polynomial_svm_clf = make_pipeline(
 )
 Polynomial_svm_clf.fit(X, y)
 
+# 다항식 커널
+
