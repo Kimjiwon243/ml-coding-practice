@@ -20,6 +20,7 @@ print(svm_clf.predict(X_new))
 print(svm_clf.decision_function(X_new))
 
 # 비선형 SVM 분류
+
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import PolynomialFeatures
 
@@ -28,7 +29,7 @@ X, y = make_moons(n_samples=100, noise=0.1, random_state=42)
 Polynomial_svm_clf = make_pipeline(
     PolynomialFeatures(degree=3),
     StandardScaler(),
-    LinearSVC(kernel='linear', C=10, random_state=42)
+    LinearSVC(C=10, max_iter=10_000, dual=True, random_state=42)
 )
 Polynomial_svm_clf.fit(X, y)
 
