@@ -10,4 +10,5 @@ plt.rc(ytick, labelsize=10)
 import numpy as np
 
 np.random.seed(42)                        # 코드 예제를 재현 가능하게 만들기 위해
-m = 100
+m = 100                                   # 샘플 개수
+X = 2 * np.random.rand(m, 1)             # 0과 2 사이의 균일한 분포에서 샘플 생성
