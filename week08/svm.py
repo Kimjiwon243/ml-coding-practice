@@ -2,10 +2,10 @@
 # 선형 SVM 분류
 
 import numpy as np
-import sklearn.datasets import load_iris
-import sklearn.pipeline import make_pipeline
-import sklearn.preprocessing import StandardScaler  
-import sklearn.svm import SVC
+from sklearn.datasets import load_iris
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import LinearSVC
 
 iris = load_iris(as_frame=True)
 X = iris.data[["petal length (cm)", "petal width (cm)"]].values
