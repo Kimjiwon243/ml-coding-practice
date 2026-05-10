@@ -9,4 +9,6 @@ import sklearn.svm import SVC
 
 iris = load_iris(as_frame=True)
 X = iris.data[["petal length (cm)", "petal width (cm)"]].values
-y = (iris.target == 2)
+y = (iris.target == 2)  # Iris virginica
+
+svm
