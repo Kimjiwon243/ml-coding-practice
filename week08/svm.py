@@ -12,10 +12,21 @@ X = iris.data[["petal length (cm)", "petal width (cm)"]].values
 y = (iris.target == 2)  # Iris virginica
 
 svm_clf = make_pipeline(StandardScaler(),
-                        LinearSVC(C=1, dual=True, random_state=42))
+                        sklearn.svm.LinearSVC(C=1, dual=True, random_state=42))
 svm_clf.fit(X, y)
 X_new = [[5.5, 1.7], [5.0, 1.5]]
 
 print(svm_clf.predict(X_new))
 print(svm_clf.decision_function(X_new))
 
+# 비선형 SVM 분류
+from sklearn.datasets import make_moons
+from sklearn.preprocessing import PolynomialFeatures
+
+X, y = make_moons(n_samples=100, noise=0.1, random_state=42)
+
+Polynomial_svm_clf = make_pipeline(
+    PolynomialFeatures(degree=3),
+    StandardScaler(),
+    SVC(kernel='linear', C=10, random_state=42)
+)
