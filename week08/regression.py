@@ -18,3 +18,13 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize=(8, 4))
 plt.plot(X, y, 'b.')
+plt.xlabel("$x_1$")
+plt.ylabel("$y$", rotation=0)
+plt.axis([0, 2, 0, 15])
+plt.grid()
+plt.show()
+
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression()
+lin_
