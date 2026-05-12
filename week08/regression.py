@@ -127,3 +127,18 @@ print(lasso_reg.predict([[1.5]]))
 
 # 엘라스틱넷
 
+from sklearn.linear_model import ElasticNet
+
+elastic_net = ElasticNet(alpha=0.1, l1_ratio=0.5)
+elastic_net.fit(X, y)
+print(elastic_net.predict([[1.5]]))
+
+# 로지스틱 회귀
+
+from sklearn.datasets import load.iris
+
+iris = load_iris(as_frame=True)
+list(iris)
+
+print(iris.data.head(3))
+print(iris.target.head(3))
