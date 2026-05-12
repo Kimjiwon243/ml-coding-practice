@@ -135,7 +135,7 @@ print(elastic_net.predict([[1.5]]))
 
 # 로지스틱 회귀
 
-from sklearn.datasets import load.iris
+from sklearn.datasets import load_iris
 
 iris = load_iris(as_frame=True)
 list(iris)
