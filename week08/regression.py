@@ -65,3 +65,6 @@ X_poly = poly_features.fit_transform(X)
 print(X[0])
 print(X_poly[0])
 
+lin_reg = LinearRegression()
+lin_reg.fit(X_poly, y)
+lin_reg.intercept_, lin_reg.coef_
