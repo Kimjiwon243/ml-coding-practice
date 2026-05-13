@@ -16,8 +16,8 @@ y = 4 + 3 * X + np.random.randn(m, 1)     # 열 벡터
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(8, 4))
-plt.plot(X, y, 'b.')
+plt.figure(figsize=(6, 4))
+plt.plot(X, y, "b.")
 plt.xlabel("$x_1$")
 plt.ylabel("$y$", rotation=0)
 plt.axis([0, 2, 0, 15])
@@ -50,8 +50,8 @@ m = 100
 X = 6 * np.random.rand(m, 1) - 3
 y = 0.5 * X ** 2 + X + 2 + np.random.randn(m, 1)
 
-plt.figure(figsize=(8, 4))
-plt.plot(X, y, 'b.')    
+plt.figure(figsize=(6, 4))
+plt.plot(X, y, "b.")
 plt.xlabel("$x_1$")
 plt.ylabel("$y$", rotation=0)
 plt.axis([-3, 3, 0, 10])
@@ -73,9 +73,9 @@ X_new = np.linspace(-3, 3, 100).reshape(100, 1)
 X_new_poly = poly_features.transform(X_new)
 y_new = lin_reg.predict(X_new_poly)
 
-plt.figure(figsize=(8, 4))
-plt.plot(X, y, 'b.')
-plt.plot(X_new, y_new, 'r-', linewidth=2, label="Predictions")
+plt.figure(figsize=(6, 4))
+plt.plot(X, y, "b.")
+plt.plot(X_new, y_new, "r-", linewidth=2, label="Predictions")
 plt.xlabel("$x_1$")
 plt.ylabel("$y$", rotation=0)
 plt.legend(loc="upper left")
@@ -95,7 +95,7 @@ X_new = np.linspace(0, 3, 100).reshape(100, 1)
 plt.figure(figsize=(6, 4))
 plt.plot(X, y, ".")
 plt.xlabel("$x_1$")
-plt.ylabel("$y$", rotation=0)
+plt.ylabel("$y$  ", rotation=0)
 plt.axis([0, 3, 0, 3.5])
 plt.grid()
 plt.show()
@@ -134,7 +134,6 @@ elastic_net.fit(X, y)
 print(elastic_net.predict([[1.5]]))
 
 # 로지스틱 회귀
-
 from sklearn.datasets import load_iris
 
 iris = load_iris(as_frame=True)
@@ -149,11 +148,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 X = iris.data[["petal width (cm)"]].values
-y = iris.target_names[iris.target] == "virginica"
+y = iris.target_names[iris.target] == 'virginica'
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
 log_reg = LogisticRegression(random_state=42)
-log_reg.flt(X_train, y_train)
+log_reg.fit(X_train, y_train)
 
 print(log_reg.predict([[1.7], [1.5]]))
 
