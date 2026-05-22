@@ -31,3 +31,5 @@ print(tree_clf.predict([[5, 1.5]]))
 # 규제 매개변수
 
 from seklearn.datasets import make_moons
+
+X_moons, y_moons = make_moons(n)
