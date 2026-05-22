@@ -30,12 +30,12 @@ print(tree_clf.predict([[5, 1.5]]))
 
 # 규제 매개변수
 
-from seklearn.datasets import make_moons
+from sklearn.datasets import make_moons
 
-X_moons, y_moons = make_moons(n_samples=150, noise=0.2, raandom_state=42)
+X_moons, y_moons = make_moons(n_samples=150, noise=0.2, random_state=42)
 
 tree_clf1 = DecisionTreeClassifier(random_state=42)
-tree_clf2 = DecisionTreeClassifier(max_depth=5, random_state=42)
+tree_clf2 = DecisionTreeClassifier(min_samples_leaf=5, random_state=42)
 tree_clf1.fit(X_moons, y_moons)
 tree_clf2.fit(X_moons, y_moons)
 
@@ -85,18 +85,18 @@ custom_cmap = ListedColormap(["#fafab0", "#9898ff", "#a0faa0"])
 
 plt.figure(figsize=(8, 4))
 
-axes = [-2.3, 2.4, -0.6, 0.7]
+axes = [-2.2, 2.4, -0.6, 0.7]
 z0s, z1s = np.meshgrid(np.linspace(axes[0], axes[1], 100),
                        np.linspace(axes[2], axes[3], 100))
 X_iris_pca_all = np.c_[z0s.ravel(), z1s.ravel()]
 y_pred = tree_clf_pca.predict(X_iris_pca_all).reshape(z0s.shape)
 
-plt.contourf(z0s, z1s, y_pred, cmap=custom_cmap)
+plt.contourf(z0s, z1s, y_pred, alpha=0.3, cmap=custom_cmap)
 for idx, (name, style) in enumerate(zip(iris.target_names, ("yo", "bs", "g^"))):
     plt.plot(X_iris_rotated[:, 0][y_iris == idx],
              X_iris_rotated[:, 1][y_iris == idx],
              style, label=f"Iris {name}")
-    
+
 plt.xlabel("$z_1$")
 plt.ylabel("$z_2$", rotation=0)
 th1, th2 = tree_clf_pca.tree_.threshold[[0, 2]]
