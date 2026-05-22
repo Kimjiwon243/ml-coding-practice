@@ -68,3 +68,12 @@ Source.from_file("regression_tree.dot")
 
 """# 축 방향에 대한 민감성"""
 
+from sklearn.decomposition import PCA
+form sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+pca_pipeline = make_pipeline(StandardScaler(), PCA())
+X_iris_rotated = pca_pipeline.fit_transform(X_iris)
+tree_clf_pca = DecisionTreeClassifier(max_depth=2, random_state=42)
+tree_clf_pca.fit(X_iris_rotated, y_iris)
+
