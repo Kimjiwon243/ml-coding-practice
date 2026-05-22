@@ -32,4 +32,6 @@ print(tree_clf.predict([[5, 1.5]]))
 
 from seklearn.datasets import make_moons
 
-X_moons, y_moons = make_moons(n)
+X_moons, y_moons = make_moons(n_samples=150, noise=0.2, raandom_state=42)
+
+tree_
