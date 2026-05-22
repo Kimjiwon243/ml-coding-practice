@@ -82,3 +82,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 custom_cmap = ListedColormap(["#fafab0", "#9898ff", "#a0faa0"])
+
+plt.figure(figsize=(8, 4))
+
+axes = [-2.3, 2.4, -0.6, 0.7]
