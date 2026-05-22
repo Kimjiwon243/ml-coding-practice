@@ -27,3 +27,7 @@ Source.from_file("iris_tree.dot")
 
 print(tree_clf.predict_proba([[5, 1.5]])).round(3))
 print(tree_clf.predict([[5, 1.5]]))
+
+# 규제 매개변수
+
+from seklearn.datasets import make_moons
