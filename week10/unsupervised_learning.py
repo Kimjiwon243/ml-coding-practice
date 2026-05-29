@@ -119,4 +119,8 @@ plt.show()
 from sklearn.cluster import DBSCAN
 from sklearn.datasets import make_moons
 
-X, 
+X, y =make_moons(n_samples=1000, noise=0.05, random_state=42)
+dbscan = DBSCAN(eps=0.05, min_samples=5)
+dbsen.fit(X)
+
+print(dbscan.labels_[:10])
