@@ -58,3 +58,10 @@ plt.xlabel("$k$")
 plt.ylabel("이너셔")
 plt.annotate("", xy=(5, inertias[4]), xytext=(4.45, 650), arrowprops=dict(facecolor='black', shrink=0.1))
 plt.text(4.5, 850, "엘보", horizontalalignment="center")
+plt.axis([1, 8.5, 0, 3500])
+plt.grid()
+plt.show()
+
+from sklearn.metrics import silhouette_score
+
+print
