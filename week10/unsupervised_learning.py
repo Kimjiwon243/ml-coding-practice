@@ -53,11 +53,11 @@ kmeans_per_k = [KMeans(n_clusters=k, n_init=10, random_state=42).fit(X) for k in
 inertias = [model.inertia_ for model in kmeans_per_k]
 
 plt.figure(figsize=(8, 3.5))
-plt.plot(range(1, 10), inertias, 'bo-')
+plt.plot(range(1, 10), inertias, "bo-")
 plt.xlabel("$k$")
 plt.ylabel("이너셔")
 plt.annotate("", xy=(5, inertias[4]), xytext=(4.45, 650), arrowprops=dict(facecolor='black', shrink=0.1))
-plt.text(4.5, 850, "엘보", horizontalalignment="center")
+plt.text(4.5, 650, "엘보", horizontalalignment="center")
 plt.axis([1, 8.5, 0, 3500])
 plt.grid()
 plt.show()
@@ -69,7 +69,7 @@ print(silhouette_score(X, kmeans.labels_))
 silhouette_scores = [silhouette_score(X, model.labels_) for model in kmeans_per_k[1:]]
 
 plt.figure(figsize=(8, 3))
-plt.plot(range(2, 10), silhouette_scores, 'bo-')
+plt.plot(range(2, 10), silhouette_scores, "bo-")
 plt.xlabel("$k$")
 plt.ylabel("실루엣 점수")
 plt.axis([1.8, 8.5, 0.55, 0.8])
@@ -82,21 +82,21 @@ from matplotlib.ticker import FixedLocator, FixedFormatter
 plt.figure(figsize=(11, 9))
 
 for k in (3, 4, 5, 6):
-    plt.subplot(2, 2, k -2)
+    plt.subplot(2, 2, k - 2)
 
     y_pred = kmeans_per_k[k - 1].labels_
-    silhouette_cofficients = silhouette_samples(X, y_pred)
+    silhouette_coefficients = silhouette_samples(X, y_pred)
 
     padding = len(X) // 30
     pos = padding
-    tick = []
+    ticks = []
     for i in range(k):
-        coeffs = silhouette_cofficients[y_pred == i]
+        coeffs = silhouette_coefficients[y_pred == i]
         coeffs.sort()
 
         color = plt.cm.Spectral(i / k)
         plt.fill_betweenx(np.arange(pos, pos + len(coeffs)), 0, coeffs,
-                  facecolor=color, edgecolor=color, alpha=0.7)
+                          facecolor=color, edgecolor=color, alpha=0.7)
         ticks.append(pos + len(coeffs) // 2)
         pos += len(coeffs) + padding
 
@@ -112,6 +112,7 @@ for k in (3, 4, 5, 6):
         plt.tick_params(labelbottom=False)
 
     plt.axvline(x=silhouette_scores[k - 2], color="red", linestyle="--")
+    plt.title(f"$k={k}$")
 
 plt.show()
 
@@ -119,7 +120,7 @@ plt.show()
 from sklearn.cluster import DBSCAN
 from sklearn.datasets import make_moons
 
-X, y =make_moons(n_samples=1000, noise=0.05, random_state=42)
+X, y = make_moons(n_samples=1000, noise=0.05, random_state=42)
 dbscan = DBSCAN(eps=0.05, min_samples=5)
 dbscan.fit(X)
 
@@ -127,7 +128,6 @@ print(dbscan.labels_[:10])
 
 print(dbscan.core_sample_indices_[:10])
 print(dbscan.components_)
-
 
 def plot_dbscan(dbscan, X, size, show_xlabels=True, show_ylabels=True):
     core_mask = np.zeros_like(dbscan.labels_, dtype=bool)
