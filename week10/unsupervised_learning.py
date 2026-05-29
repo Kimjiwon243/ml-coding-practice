@@ -125,3 +125,4 @@ dbscan.fit(X)
 
 print(dbscan.labels_[:10])
 
+print(dbsca)
