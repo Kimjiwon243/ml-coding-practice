@@ -50,4 +50,4 @@ print(kmeans.inertia_)
 print(kmeans.score(X))
 
 kmeans_per_k = [KMeans(n_clusters=k, n_init=10, random_state=42).fit(X) for k in range(1, 10)]
-inertias = [model.inertia_ for]
+inertias = [model.inertia_ for mode in kmeans_per_k]
