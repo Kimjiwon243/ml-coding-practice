@@ -65,3 +65,5 @@ plt.show()
 from sklearn.metrics import silhouette_score
 
 print(silhouette_score(X, kmeans.labels_))
+
+silhouette_scores = [silhouette_score(X, model.labels_) for model in kmeans_per_k[1:]]
