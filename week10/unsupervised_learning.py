@@ -81,3 +81,17 @@ from matplotlib.ticker import FixedLocator, FixedFormatter
 
 plt.figure(figsize=(11, 9))
 
+for k in (3, 4, 5, 6):
+    plt.subplot(2, 2, k -2)
+
+    y_pred = kmeans_per_k[k - 1].labels_
+    silhouette_cofficients = silhouette_samples(X, y_pred)
+
+    padding = len(X) // 30
+    pos = padding
+    tick = []
+    for i in range(k):
+        coeffs = silhouette_cofficients[y_pred == i]
+        coeffs.sort()
+
+        color = plt.cm.Spec
